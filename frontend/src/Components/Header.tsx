@@ -1,6 +1,12 @@
 import React from "react";
 import Link from '@mui/material/Link';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
+import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+import person from '../Icons/person.svg'
+import { green } from '@mui/material/colors';
 
 export default function Header(){
     function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -42,8 +48,19 @@ export default function Header(){
             </Breadcrumbs>
         </div>
         </div>
-        <div className='col-start-13 col-span-4'>
-          <h1>Dashboard</h1>
+        <div className='col-start-13 col-span-4 flex justify-end gap-5'>
+          <button>
+            <NotificationsNoneOutlinedIcon sx={{ color: green[900] }}/>
+          </button>
+          <button>
+            <SettingsIcon sx={{ color: green[900] }}/>
+          </button>
+          <button>
+            <MailOutlinedIcon sx={{ color: green[900] }} />
+          </button>
+          <button>
+            <img src={person} className="App-logo w-10" alt="logo" />
+          </button>
         </div>
         </div>
         </>

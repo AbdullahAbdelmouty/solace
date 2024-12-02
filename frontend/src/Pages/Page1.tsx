@@ -1,6 +1,7 @@
 import React from "react";
 import AccountCard from "../Components/AccountCard";
 import BasicInfo from "../Components/BasicInfo";
+import {Routes, Route,Navigate} from "react-router-dom";
 
 export default function Page1(){
     return(
@@ -10,7 +11,6 @@ export default function Page1(){
             <AccountCard/>
             </div>
             <div className=" col-span-9">
-            <BasicInfo/>
             <BasicInfo/>
             <BasicInfo/>
             </div>
