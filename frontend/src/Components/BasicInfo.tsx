@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import EditBasicInfo from './EditBasicInfo';
+import { useState ,useEffect} from 'react';
 
 const style = {
     position: 'absolute',
@@ -24,6 +25,40 @@ export default function BasicInfo(props:any){
         variables: {userId:1}
     })
     console.log(data,"data");
+    // Define state for each variable
+    const [firstName, setFirstName] = useState('');
+    const [fatherName, setFatherName] = useState('');
+    const [grandfatherName, setGrandfatherName] = useState('');
+    const [familyName, setFamilyName] = useState('');
+    const [firstNameAr, setFirstNameAr] = useState('');
+    const [fatherNameAr, setFatherNameAr] = useState('');
+    const [grandfatherNameAr, setGrandfatherNameAr] = useState('');
+    const [familyNameAr, setFamilyNameAr] = useState('');
+    const [nationalId, setNationalId] = useState('');
+    let [nationalIdExpiry, setNationalIdExpiry] = useState('');
+    nationalIdExpiry = new Date(nationalIdExpiry).toLocaleDateString();
+    const [maritalStatus, setMaritalStatus] = useState('');
+    const [dependants, setDependants] = useState(0);
+
+    // Set state when data is fetched
+    useEffect(() => {
+        if (data && data.user) {
+        const user = data.user;
+        setFirstName(user.firstName);
+        setFatherName(user.fatherName);
+        setGrandfatherName(user.grandfatherName);
+        setFamilyName(user.familyName);
+        setFirstNameAr(user.localizedName.firstName);
+        setFatherNameAr(user.localizedName.fatherName);
+        setGrandfatherNameAr(user.localizedName.grandfatherName);
+        setFamilyNameAr(user.localizedName.familyName);
+        setNationalId(user.nationalId.idNumber);
+        setNationalIdExpiry(user.nationalId.expiryDate);
+        setDependants(user.dependants);
+        setMaritalStatus(user.maritalStatus.name);
+}
+    }, [data]);
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -38,15 +73,15 @@ export default function BasicInfo(props:any){
                 <div>
                     <div className='mb-2'>
                         <p>National ID Number</p>
-                        <p className='text-lg font-medium'>1234567890</p>
+                        <p className='text-lg font-medium'>{nationalId}</p>
                     </div>
                     <div className='mb-2'>
                         <p>First Name</p>
-                        <p className='text-lg font-medium'>Jone</p>
+                        <p className='text-lg font-medium'>{firstName}</p>
                     </div>
                     <div className='mb-2'>
                         <p>الأسم الأول</p>
-                        <p className='text-lg font-medium'>جون</p>
+                        <p className='text-lg font-medium'>{firstNameAr}</p>
                     </div> 
                     <div className='mb-2'>
                         <p>Date of birth</p>
@@ -58,21 +93,21 @@ export default function BasicInfo(props:any){
                     </div> 
                     <div className='mb-2'>
                         <p>Matiral Status</p>
-                        <p className='text-lg font-medium'>Single</p>
+                        <p className='text-lg font-medium'>{maritalStatus}</p>
                     </div>     
                 </div>
                 <div>
                     <div className='mb-2'>
                         <p>National ID Expiring Date</p>
-                        <p className='text-lg font-medium'>0/1/2026</p>
+                        <p className='text-lg font-medium'>{nationalIdExpiry}</p>
                     </div>
                     <div className='mb-2'>
                         <p>Father Name</p>
-                        <p className='text-lg font-medium'>Jone</p>
+                        <p className='text-lg font-medium'>{fatherName}</p>
                     </div>
                     <div className='mb-2'>
                         <p>أسم الأب</p>
-                        <p className='text-lg font-medium'>جون</p>
+                        <p className='text-lg font-medium'>{fatherNameAr}</p>
                     </div> 
                     <div className='mb-2'>
                         <p>Gender</p>
@@ -94,11 +129,11 @@ export default function BasicInfo(props:any){
                     </div>
                     <div className='mb-2'>
                         <p>Grand Fathar Name</p>
-                        <p className='text-lg font-medium'>Jone</p>
+                        <p className='text-lg font-medium'>{grandfatherName}</p>
                     </div>
                     <div className='mb-2'>
                         <p>اسم الجد</p>
-                        <p className='text-lg font-medium'>جون</p>
+                        <p className='text-lg font-medium'>{grandfatherNameAr}</p>
                     </div> 
                     <div className='mb-2'>
                         <p>Nationality</p>
@@ -116,11 +151,11 @@ export default function BasicInfo(props:any){
                     </div>
                     <div className='mb-2'>
                         <p>Family Name</p>
-                        <p className='text-lg font-medium'>Jone</p>
+                        <p className='text-lg font-medium'>{familyName}</p>
                     </div>
                     <div className='mb-2'>
                         <p>اللقب / اسم العائلة</p>
-                        <p className='text-lg font-medium'>جون</p>
+                        <p className='text-lg font-medium'>{familyNameAr}</p>
                     </div> 
                     <div className='mb-2'>
                         <p>Additional Nationality</p>
