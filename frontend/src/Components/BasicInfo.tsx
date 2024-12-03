@@ -1,6 +1,13 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../apollo/queries/userQuery';
 
 export default function BasicInfo(props:any){
+    const {loading,error,data} = useQuery(GET_USER,{
+        variables: {userId:1}
+    })
+    console.log(data,"data");
+    
     return(
         <>
         <div className='bg-white p-5 rounded-lg mb-4'>
