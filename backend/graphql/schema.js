@@ -44,9 +44,15 @@ const schema = buildSchema(`
     user(id: Int!): User
   }
 
-  type Mutation {
-    updateUser(firstName: String!): User
-  }
+type Mutation {
+  updateUser(
+    firstName: String,
+    fatherName: String,
+    grandfatherName: String,
+    familyName: String
+  ): User
+}
+
 `);
 
 module.exports = schema;

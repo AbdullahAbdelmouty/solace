@@ -6,6 +6,9 @@ import { UPDATE_USER } from '../apollo/queries/userMutation';
 
 interface UserFormData {
   firstName: string;
+  fatherName: string;
+  grandfatherName: string;
+  familyName: string;
 }
 
 const UserEditForm: React.FC = () => {
@@ -19,7 +22,12 @@ const UserEditForm: React.FC = () => {
 
   useEffect(() => {
     if (data?.user) {
-      reset({ firstName: data.user.firstName });
+      reset({ 
+        firstName: data.user.firstName,
+        fatherName: data.user.fatherName,
+        grandfatherName: data.user.fatherName,
+        familyName: data.user.familyName
+      });
     }
   }, [data, reset]);
 
@@ -28,6 +36,9 @@ const UserEditForm: React.FC = () => {
     updateUser({
       variables: {
         firstName: formData.firstName,
+        fatherName: formData.fatherName,
+        grandfatherName: formData.fatherName,
+        familyName: formData.familyName
       },
     });
   };
@@ -46,6 +57,24 @@ const UserEditForm: React.FC = () => {
         <input
           type="text"
           {...register('firstName')}
+          className="border p-2 w-full"
+        />
+        <label>Fathar Name:</label>
+        <input
+          type="text"
+          {...register('fatherName')}
+          className="border p-2 w-full"
+        />
+        <label>GradFathar Name:</label>
+        <input
+          type="text"
+          {...register('grandfatherName')}
+          className="border p-2 w-full"
+        />
+         <label>Family Name:</label>
+        <input
+          type="text"
+          {...register('familyName')}
           className="border p-2 w-full"
         />
       </div>
