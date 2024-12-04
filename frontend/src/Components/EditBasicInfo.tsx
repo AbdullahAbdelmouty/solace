@@ -49,7 +49,7 @@ const UserEditForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 p-8 bg-gray-600"
+      className="space-y-4 p-8 bg-white "
     >
       <h2 className="text-xl font-bold">Edit User Information</h2>
       <div>

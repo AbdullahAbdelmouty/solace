@@ -36,12 +36,12 @@ export default function AccountCard(){
                 onChange={handleChange}
                 >
                 <ToggleButton sx={{ border: 0 }}  value="list" aria-label="list">
-                    <Link to=''>
+                    <Link to="" >
                       Personal Information
                     </Link>
                 </ToggleButton>
                 <ToggleButton sx={{ border: 0 }}  value="two" aria-label="list">
-                    <Link to=''>
+                    <Link to="bank-info">
                     Financial Information
                     </Link>
                 </ToggleButton>

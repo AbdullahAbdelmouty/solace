@@ -171,7 +171,7 @@ export default function BasicInfo(props:any){
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div>
+        <div className='flex justify-center items-center'>
         <EditBasicInfo/>
         </div>
       </Modal>
